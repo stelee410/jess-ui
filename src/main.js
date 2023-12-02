@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import ProfileListShort from './components/profileListShort';
 import ProfileList from './components/profileList';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const defaultTheme = createTheme({
@@ -17,6 +19,12 @@ const defaultTheme = createTheme({
 
 
 export default function Main() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+        navigate('/');
+  }, [navigate]);
+  
   let recent_profiles = [
     {name:'jess',displayName:'Jess C', avatar:'/samples/sample.png',description:'Snowy mountain peak under a starry night sky.'},
     {name:'catty',displayName:'Catty', avatar:'/samples/sample2.png',description:'Desert oasis with camels and a vibrant sunset.'},

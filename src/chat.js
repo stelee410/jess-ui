@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
 import Layout from './layout';
-import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import Paper from '@mui/material/Paper';

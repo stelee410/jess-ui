@@ -1,4 +1,6 @@
 import { Card, CardMedia, CardContent, CardActions, Button, Typography, Avatar, Box } from "@mui/material";
+import url from '../utils/url'
+
 
 function ProfileCard({profile}){
     return (
@@ -25,7 +27,7 @@ function ProfileCard({profile}){
         </CardContent>
         <CardActions>
             <Button size="small">Share</Button>
-            <Button size="small" href={`chat/${profile.name}`}>Chat</Button>
+            <Button size="small" href={url(`chat/${profile.name}`)}>Chat</Button>
         </CardActions>
         </Card>
     )

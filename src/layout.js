@@ -22,6 +22,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DrawerHeader from './components/drawHeader';
 import AppBar from './components/appBar';
 import Drawer from './components/drawer';
+import ping from './services/ping';
+import { useEffect } from 'react';
+import WifiTetheringIcon from '@mui/icons-material/WifiTethering';
+import WifiOffIcon from '@mui/icons-material/WifiOff';
 
 
 const menuItems = [
@@ -36,6 +40,7 @@ const menuItems = [
 export default function Layout({children}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [connected, setConnected] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -45,6 +50,11 @@ export default function Layout({children}) {
     setOpen(false);
   };
 
+  useEffect(()=>{
+    ping().then(message=>{
+      setConnected(true);
+    })
+  },[]);
   return (
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -62,8 +72,9 @@ export default function Layout({children}) {
             >
               <MenuIcon />
             </IconButton>
+            {connected ? <WifiTetheringIcon color="primary" /> : <WifiOffIcon color="error" />} &nbsp;
             <Typography variant="h6" noWrap component="div">
-              ElevenAI
+              ElevenAI 
             </Typography>
           </Toolbar>
         </AppBar>
